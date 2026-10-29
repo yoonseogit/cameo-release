@@ -1,0 +1,26 @@
+/*
+ * Fast DDS 2.14.6 / ROS 2 Jazzy / ARM64
+ * CacheChange_t layout verified locally:
+ *   writerGUID      @ +12 (16 bytes)
+ *   sequenceNumber  @ +48 (high:int32 @ +48, low:uint32 @ +52)
+ *
+ * Attach this probe to ONLY the ROS 2 publisher process with bpftrace -p <PID>.
+ */
+
+uprobe:/opt/ros/jazzy/lib/libfastrtps.so.2.14.6:_ZN8eprosima8fastrtps4rtps14StatefulWriter30unsent_change_added_to_historyEPNS1_13CacheChange_tERKNSt6chrono10time_pointINS5_3_V212steady_clockENS5_8durationIlSt5ratioILl1ELl1000000000EEEEEE
+{
+    $change = arg1;
+
+    if ($change != 0) {
+        $high = *(int32*)uptr($change + 48);
+        $low  = *(uint32*)uptr($change + 52);
+
+        printf("[SENDER_IDENTITY] pid=%d tid=%d change=0x%lx guid_raw=%r seq_high=%d seq_low=%u\n",
+               pid,
+               tid,
+               $change,
+               buf(uptr($change + 12), 16),
+               $high,
+               $low);
+    }
+}

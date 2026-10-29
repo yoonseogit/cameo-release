@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<policy version="0.2.0">
+  <enclaves>
+    <enclave path="/demo_node">
+      <profiles>
+        <profile ns="/" node="callback_security_demo_node">
+          <topics publish="ALLOW">
+            <topic>/diagnostics</topic>
+            <topic>/validated_msg</topic>
+            <topic>/rosout</topic>
+            <topic>/parameter_events</topic>
+          </topics>
+          <topics subscribe="ALLOW">
+            <topic>/input_A</topic>
+            <topic>/input_B</topic>
+            <topic>/parameter_events</topic>
+          </topics>
+          <services reply="ALLOW">
+            <service>/*</service>
+          </services>
+        </profile>
+      </profiles>
+    </enclave>
+
+    <enclave path="/observer">
+      <profiles>
+        <profile ns="/" node="observer">
+          <topics publish="ALLOW">
+            <topic>/rosout</topic>
+            <topic>/parameter_events</topic>
+          </topics>
+          <topics subscribe="ALLOW">
+            <topic>/validated_msg</topic>
+            <topic>/parameter_events</topic>
+          </topics>
+          <services reply="ALLOW">
+            <service>/*</service>
+          </services>
+        </profile>
+      </profiles>
+    </enclave>
+
+    <enclave path="/trigger">
+      <profiles>
+        <profile ns="/" node="trigger">
+          <topics publish="ALLOW">
+            <topic>/input_A</topic>
+            <topic>/input_B</topic>
+            <topic>/rosout</topic>
+            <topic>/parameter_events</topic>
+          </topics>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+          </topics>
+          <services reply="ALLOW">
+            <service>/*</service>
+          </services>
+        </profile>
+      </profiles>
+    </enclave>
+  </enclaves>
+</policy>

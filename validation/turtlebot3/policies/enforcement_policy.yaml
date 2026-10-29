@@ -1,0 +1,9 @@
+version: 1
+artifact: enforcement_policy
+manifest_id: "f126bae00d884890"
+policy_mode: allowlist
+allow:
+  - callback_instance_id: 1
+    topic_id: 1
+  - callback_instance_id: 2
+    topic_id: 2

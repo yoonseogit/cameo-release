@@ -1,0 +1,21 @@
+version: 1
+artifact: runtime_manifest
+manifest_id: "f126bae00d884890"
+callback_instances:
+  - callback_instance_id: 1
+    selector:
+      input_topic: "/input_A"
+      instance: 1
+    callback_hint: "callback_a"
+  - callback_instance_id: 2
+    selector:
+      input_topic: "/input_B"
+      instance: 1
+    callback_hint: "callback_b"
+topics:
+  - topic_id: 1
+    ros_name: "/diagnostics"
+    dds_name: "rt/diagnostics"
+  - topic_id: 2
+    ros_name: "/validated_msg"
+    dds_name: "rt/validated_msg"

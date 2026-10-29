@@ -1,0 +1,15 @@
+version: 1
+policy_mode: allowlist
+callbacks:
+  - selector:
+      input_topic: "/input_A"
+      instance: 1
+    callback_hint: "callback_a"
+    allow:
+      - "/diagnostics"
+  - selector:
+      input_topic: "/input_B"
+      instance: 1
+    callback_hint: "callback_b"
+    allow:
+      - "/validated_msg"

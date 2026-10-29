@@ -1,0 +1,36 @@
+# ROS 2 / colcon workspaces
+ros_ws/build/
+ros_ws/install/
+ros_ws/log/
+
+# CMake build trees
+build/
+cmake-build-*/
+mediator/build/
+policy_generator/build/
+
+# Locally built executables
+kernel_bypass_guard/kernel_bypass_guard
+provenance_tracker/provenance_tracker
+
+# Runtime output
+run/
+*.log
+core
+core.*
+
+# IDE and operating-system metadata
+.idea/
+.vscode/
+*.swp
+*~
+.DS_Store
+
+# Security credentials must never be committed
+keystore/
+keystore_callback_demo/
+**/*.key
+**/*.pem
+**/*.p12
+**/*.pfx
+

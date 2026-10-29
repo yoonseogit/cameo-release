@@ -1,0 +1,18 @@
+#!/bin/bash
+
+source /opt/ros/jazzy/setup.bash
+
+source "$HOME/01Project/04CAMEO/ros_ws/install/setup.bash"
+
+export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+
+export FASTRTPS_DEFAULT_PROFILES_FILE="$HOME/01Project/04CAMEO/fastdds/udp_only.xml"
+
+export RMW_FASTRTPS_PUBLICATION_MODE=ASYNCHRONOUS
+
+unset FASTDDS_BUILTIN_TRANSPORTS
+
+echo "Fast DDS UDP-only environment applied"
+echo "RMW_IMPLEMENTATION=$RMW_IMPLEMENTATION"
+echo "FASTRTPS_DEFAULT_PROFILES_FILE=$FASTRTPS_DEFAULT_PROFILES_FILE"
+echo "RMW_FASTRTPS_PUBLICATION_MODE=$RMW_FASTRTPS_PUBLICATION_MODE"
